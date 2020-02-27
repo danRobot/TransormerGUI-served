@@ -48,7 +48,7 @@ class App:
         self.sequence = [ImageTk.PhotoImage(img)
                             for img in ImageSequence.Iterator(
                                     Image.open(
-                                    r'sdf.gif'))]
+                                    r'../sdf.gif'))]
 
         self.image = self.canvas.create_image(320,408, image=self.sequence[0])
         
