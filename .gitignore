@@ -3,6 +3,13 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+#IDEs
+.project
+.pydevproject
+.vscode/
+
+
+
 # C extensions
 *.so
 
