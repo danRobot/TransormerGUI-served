@@ -27,11 +27,7 @@ MODEL_CLASSES = {
     "xlm": (XLMWithLMHeadModel, XLMTokenizer),
 }
 
-def set_seed(args):
-    np.random.seed(args.seed)
-    torch.manual_seed(args.seed)
-    if args.n_gpu > 0:
-        torch.cuda.manual_seed_all(args.seed)
+
 
 def prepare_ctrl_input(args, _, tokenizer, prompt_text):
     if args.temperature > 0.7:

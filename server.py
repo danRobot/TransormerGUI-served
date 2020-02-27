@@ -9,14 +9,14 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument(
     "--model_type",
-    default=None,
+    default="gpt2-xl",
     type=str,
     required=True,
     help="Model type selected in the list: ",
 )
 parser.add_argument(
     "--model_name_or_path",
-    default=None,
+    default="gpt2-xl",
     type=str,
     required=True,
     help="Path to pre-trained model or shortcut name selected in the list: " ,
