@@ -9,14 +9,14 @@ from time import sleep
 parser = argparse.ArgumentParser()
 parser.add_argument(
     "--model_type",
-    default="gpt2-xl",
+    default="gpt2-large",
     type=str,
     required=True,
     help="Model type selected in the list: ",
 )
 parser.add_argument(
     "--model_name_or_path",
-    default="gpt2-xl",
+    default="gpt2-large",
     type=str,
     required=True,
     help="Path to pre-trained model or shortcut name selected in the list: " ,
