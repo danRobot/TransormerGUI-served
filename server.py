@@ -3,8 +3,8 @@ from transgenerator.run import Generator
 import asyncio
 import websockets
 import argparse
-
-
+import os
+from time import sleep
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -58,6 +58,10 @@ async def hello(websocket, path):
     await websocket.send(salida)
 
 start_server = websockets.serve(hello, "0.0.0.0",6006)
+
+os.systen('./ngrok http 6006 &')
+sleep(120)
+print('ready')
 
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()

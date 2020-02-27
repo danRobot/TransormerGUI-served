@@ -31,7 +31,7 @@ class Generator():
         self.logger = logging.getLogger(__name__)
         self.MAX_LENGTH = int(10000)
         self.MODEL_CLASSES = {
-                                "gpt2": (GPT2LMHeadModel, GPT2Tokenizer),
+                                "gpt2-xl": (GPT2LMHeadModel, GPT2Tokenizer),
                                 "ctrl": (CTRLLMHeadModel, CTRLTokenizer),
                                 "openai-gpt": (OpenAIGPTLMHeadModel, OpenAIGPTTokenizer),
                                 "xlnet": (XLNetLMHeadModel, XLNetTokenizer),
