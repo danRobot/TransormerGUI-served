@@ -57,7 +57,7 @@ async def hello(websocket, path):
     salida=gen.generate(prompt,temperature=args.temperature,top_k=args.k,top_p=args.p)
     await websocket.send(salida)
 
-start_server = websockets.serve(hello, "localhost", 8765)
+start_server = websockets.serve(hello, "0.0.0.0",6006)
 
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()
