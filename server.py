@@ -9,14 +9,14 @@ from time import sleep
 parser = argparse.ArgumentParser()
 parser.add_argument(
     "--model_type",
-    default="gpt2-large",
+    default="gpt2",
     type=str,
     required=True,
     help="Model type selected in the list: ",
 )
 parser.add_argument(
     "--model_name_or_path",
-    default="gpt2-large",
+    default="gpt2",
     type=str,
     required=True,
     help="Path to pre-trained model or shortcut name selected in the list: " ,
@@ -57,7 +57,7 @@ async def hello(websocket, path):
     salida=gen.generate(prompt,temperature=args.temperature,top_k=args.k,top_p=args.p)
     await websocket.send(salida)
 
-start_server = websockets.serve(hello, "0.0.0.0",6006)
+start_server = websockets.serve(hello, "localhost",6006)
 
 os.system('./ngrok http 6006 &')
 sleep(120)
