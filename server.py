@@ -59,7 +59,7 @@ async def hello(websocket, path):
 
 start_server = websockets.serve(hello, "0.0.0.0",6006)
 
-os.systen('./ngrok http 6006 &')
+os.system('./ngrok http 6006 &')
 sleep(120)
 print('ready')
 
