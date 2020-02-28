@@ -5,8 +5,8 @@
 import asyncio
 import websockets
 
-async def hello(name):
-    uri = "ws://localhost:6006"
+async def hello(name,server):
+    uri = "ws://"+server
     async with websockets.connect(uri) as websocket:
         
 

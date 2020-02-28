@@ -5,6 +5,7 @@ from PIL import Image, ImageTk, ImageSequence
 from googletrans import Translator
 import asyncio
 from client.client import hello
+from sys import argv
 
 class App:
     def __init__(self, parent):
@@ -33,13 +34,13 @@ class App:
         def clicked():
             txt_generado.delete('1.0', END)
             translator = Translator()
-            txt_ingresado_ingles=translator.translate(txt_ingresado.get(),dest='en').text
-            txt_generado_ingles = generar_texto(txt_ingresado_ingles)
-            temp_txt=translator.translate(txt_generado_ingles, dest='es').text
-            txt_generado.insert(INSERT, temp_txt)
+            #txt_ingresado_ingles=translator.translate(txt_ingresado.get(),dest='en').text
+            txt_generado_ingles = generar_texto(txt_ingresado.get())
+            #temp_txt=translator.translate(txt_generado_ingles, dest='es').text
+            txt_generado.insert(INSERT, txt_generado_ingles)
 
         def generar_texto(entrada_texto):
-            salida_texto=asyncio.get_event_loop().run_until_complete(hello(entrada_texto))
+            salida_texto=asyncio.get_event_loop().run_until_complete(hello(entrada_texto,argv[1]))
             return salida_texto
 
         btn = Button(self.canvas, text="Generar", command=clicked)
