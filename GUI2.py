@@ -39,7 +39,7 @@ class App:
             txt_generado.insert(INSERT, temp_txt)
 
         def generar_texto(entrada_texto):
-            salida_texto=asyncio.get_event_loop().run_until_complete(hello(entrada_texto    ))
+            salida_texto=asyncio.get_event_loop().run_until_complete(hello(entrada_texto))
             return salida_texto
 
         btn = Button(self.canvas, text="Generar", command=clicked)
