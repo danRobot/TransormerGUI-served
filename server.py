@@ -61,12 +61,17 @@ if os.path.isfile('ngrok'):
     start_server = websockets.serve(hello, "0.0.0.0",6006)
     sleep(5)
     os.system('./ngrok http 6006 &')
-    sleep(60)
+    sleep(10)
     print('ready')
 else:
     start_server = websockets.serve(hello, "localhost",6006)
     print('run locally')
 
 asyncio.get_event_loop().run_until_complete(start_server)
-asyncio.get_event_loop().run_forever()
+try:
+    asyncio.get_event_loop().run_forever()
+except KeyboardInterrupt:
+    pending = asyncio.Task.all_tasks()
+    asyncio.get_event_loop().run_until_complete(asyncio.gather(*pending))
+    print('All tasks concluded.')
 
