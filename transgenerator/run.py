@@ -5,6 +5,8 @@ import numpy as np
 import torch
 
 from transformers import (
+    AutoTokenizer,
+    AutoModelWithLMHead,
     CTRLLMHeadModel,
     CTRLTokenizer,
     GPT2LMHeadModel,
@@ -32,6 +34,7 @@ class Generator():
         self.MAX_LENGTH = int(10000)
         self.MODEL_CLASSES = {
                                 "gpt2-xl": (GPT2LMHeadModel, GPT2Tokenizer),
+                                "auto": (AutoModelWithLMHead, AutoTokenizer),
                                 "gpt2": (GPT2LMHeadModel, GPT2Tokenizer),
                                 "ctrl": (CTRLLMHeadModel, CTRLTokenizer),
                                 "openai-gpt": (OpenAIGPTLMHeadModel, OpenAIGPTTokenizer),
