@@ -59,9 +59,12 @@ async def hello(websocket, path):
 
 start_server = websockets.serve(hello, "localhost",6006)
 
-os.system('./ngrok http 6006 &')
-sleep(120)
-print('ready')
+if os.path.isfile('ngrok'):
+    os.system('./ngrok http 6006 &')
+    sleep(120)
+    print('ready')
+else:
+    print('run locally')
 
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()
