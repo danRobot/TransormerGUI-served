@@ -57,13 +57,14 @@ async def hello(websocket, path):
     salida=gen.generate(prompt,temperature=args.temperature,top_k=args.k,top_p=args.p)
     await websocket.send(salida)
 
-start_server = websockets.serve(hello, "localhost",6006)
-
 if os.path.isfile('ngrok'):
+    start_server = websockets.serve(hello, "0.0.0.0",6006)
+    sleep(5)
     os.system('./ngrok http 6006 &')
-    sleep(120)
+    sleep(60)
     print('ready')
 else:
+    start_server = websockets.serve(hello, "localhost",6006)
     print('run locally')
 
 asyncio.get_event_loop().run_until_complete(start_server)
