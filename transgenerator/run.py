@@ -66,9 +66,12 @@ class Generator():
             model_class, tokenizer_class = self.MODEL_CLASSES[self.args.model_type]
         except KeyError:
             raise KeyError("the model {} you specified is not supported. You are welcome to add it and open a PR :)")
-
-        self.tokenizer = tokenizer_class.from_pretrained(args.model_name_or_path,cache_dir=args.wpath)
-        self.model = model_class.from_pretrained(args.model_name_or_path,cache_dir=args.wpath)
+        if(self.args.model_type=='auto'):
+            self.tokenizer = tokenizer_class.from_pretrained(args.wpath)
+            self.model = model_class.from_pretrained(args.wpath)
+        else:
+            self.tokenizer = tokenizer_class.from_pretrained(args.model_name_or_path,cache_dir=args.wpath)
+            self.model = model_class.from_pretrained(args.model_name_or_path,cache_dir=args.wpath)
         self.model.to(self.device)
 
         self.args.length = self.adjust_length_to_model(args.length, max_sequence_length=self.model.config.max_position_embeddings)
